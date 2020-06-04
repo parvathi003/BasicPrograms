@@ -1,0 +1,212 @@
+package p6;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Launch 
+{
+	public static void main(String[] args) 
+	{	
+		System.out.println("project");
+		System.out.println("Select the choice \n 1.fibanocci series \n 2.armstrong numbers\n 3.to reverse a string \n 4.count the number of words in a string \n 5.remove all whitespace in a string \n 6.anagram \n 7.factorial \n 8.palindrome or not \n 9.max value in array \n 10.remove special charater in a string \n");
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the choice");
+		int ch =s.nextInt();
+		switch(ch)
+		{
+			case 1: 
+				fibanocci();
+				break;
+			case 2:
+				armstrong();
+				break;
+			case 3:
+				reversse();
+				break;
+			case 4: 
+				count();
+				break;
+			case 5:
+				remove();
+				break;
+			case 6:
+				anagram();
+				break;
+			case 7: 
+				factorial();
+				break;
+			case 8:
+				palindrom();
+				break;
+			case 9:
+				max();
+				break;
+			case 10:
+				specialcCharater();
+				break;
+		}
+	}
+
+	private static void specialcCharater() 
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter string");
+		String si=s.nextLine();
+		String res="";
+		for(int i=0;i<si.length();i++)
+		{
+			if(si.charAt(i)>64 && si.charAt(i)<=122)
+			{
+				res=res+si.charAt(i);
+			}
+		}
+		System.out.println(res);
+	}
+
+	private static void max()
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the size of array");
+		int si=s.nextInt();
+		int a[]=new int[si];
+		System.out.println("enter the elements of array");
+		for(int i=0;i<si;i++)
+		{
+			a[i]=s.nextInt();
+		}
+		int max=a[0];
+		for(int i=0;i<si;i++)
+		{
+			if(max<a[i])
+			{
+				max=a[i];
+			}
+		}
+		System.out.println(max);
+	}
+
+	private static void palindrom() 
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the string");
+		String x=s.nextLine();
+		String y="";
+		for(int i=x.length()-1;i>=0;i--)
+		{
+			y=y+x.charAt(i);
+		}
+		if(x.equals(y))
+		{
+			System.out.println("palindrome");
+		}
+		else
+		{
+			System.out.println(" not palindrome");
+		}
+
+	}
+
+	private static void factorial() 
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the 1st string");
+		int num=s.nextInt();
+		int a=1;
+		for(int i=num;i>0;i--)
+		{
+			a=a*i;
+		}
+		System.out.println(a);
+	}
+
+	private static void anagram()
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the 1st string");
+		String x=s.nextLine();
+		x=x.replace(" ", "");
+		x=x.toLowerCase();
+		System.out.println("enter the 2nd string");
+		String y=s.nextLine();
+		y=y.replace(" ", "");
+		y=y.toLowerCase();
+		char a[]=x.toCharArray();
+		char b[]=y.toCharArray();
+		Arrays.sort(a);
+		Arrays.sort(b);
+		if(Arrays.equals(a,b))
+		{
+			System.out.println("anagram");
+		}
+		else
+		{
+			System.out.println("not anagram");
+		}
+	}
+
+	private static void remove() 
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the string");
+		String x=s.nextLine();
+		System.out.println( x.replaceAll(" ", ""));
+	}
+
+	private static void count()
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the string");
+		String x=s.nextLine();
+		System.out.println(x.split(" ").length);
+	}
+
+	private static void reversse() 
+	{
+		Scanner s=new Scanner(System.in); 
+		System.out.println("enter the string");
+		String x=s.nextLine();
+		for(int i=x.length()-1;i>=0;i--)
+		{
+			System.out.print((x.charAt(i)));
+		}
+	}
+
+	private static void armstrong()
+	{
+		int c=0,a,temp;  
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the number");
+	    int n=s.nextInt(); 
+	    temp=n;  
+	    while(n>0)  
+	    {  
+	    a=n%10;  
+	    n=n/10;  
+	    c=c+(a*a*a);  
+	    }  
+	    if(temp==c)  
+	    System.out.println("armstrong number");   
+	    else  
+	        System.out.println("Not armstrong number");
+	}
+
+	private static void fibanocci() 
+	{
+		int a=0;
+		int b=1;
+		int temp;
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the count");
+		int count=s.nextInt();
+		System.out.println(a);
+		System.out.println(b);
+		for(int i=0;i<=count;i++)
+		{
+			temp=a+b;
+			System.out.println(temp);
+			a=b;
+			b=temp;
+			
+		}
+	}
+}
